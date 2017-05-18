@@ -2,14 +2,14 @@ Neural Musical Style Transfer - Assignment for Sound and Speech Processing cours
 
 This is an implementation of musical style transfer, using convolutional neural networks.
 
-#Dependencies
+# Dependencies
 * Numpy
 * Tensorflow
 * Librosa
 
-#How it works
+# How it works
 
-Given two input sound files, one of which supplies the "content" and the other the "style", the implementation (see `mystyle.py`)
+Given two input sound files, one of which supplies the "content" and the other the "style", the implementation (see `myStyle.py`)
 follows the four following steps:
 
 * Load the two input files, perform short-time Fourier transform on them, and return the results after dropping the phases.
@@ -20,3 +20,15 @@ output's gram matrix from the "style" gram matrix.
 * Save the resulting optimised input as a ".wav" file, after performing phase reconstruction (see "Signal estimation from modified short-time Fourier transform. D Griffin, J Lim")
 
 
+# Results
+
+Some example results are:
+
+* Content: `r_S.mp3`, Style `m_S.mp3`, Result: `rs_ms.wav` 
+![Results](https://github.com/wintershammer/soundProcessingAssignment/blob/master/figure_1-1.png)
+* Content: `r_C.mp3`, Style `m_S.mp3`, Result: `rc_ms.wav` 
+![Results](https://github.com/wintershammer/soundProcessingAssignment/blob/master/figure_1-2.png)
+* Content: `r_C.mp3`, Style `m_C.mp3`, Result: `rc_mc.wav` 
+![Results](https://github.com/wintershammer/soundProcessingAssignment/blob/master/figure_1.png)
+* Content: `guitarFolk.wav`, Style `jazzpack.wav`, Result: `jazzFolk.wav` 
+![Results](https://github.com/wintershammer/soundProcessingAssignment/blob/master/figure_1-4.png)
