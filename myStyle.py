@@ -10,6 +10,7 @@ def generateFourierMagns(filename, fourierWindowSize):
     #angle(D[f,t]) = phase of frequency f at time t
     stftMagns = librosa.stft(x, fourierWindowSize)
     print("input sampled @",fs)
+    return  np.abs(stftMagns[:,:430]), fs
 
 def runNetwork(channelNum, sampleNum, kernel, optimisationVars):
     
@@ -95,6 +96,8 @@ def styleTransfer(contentFeats, styleGram, kernel, alpha, iterations, channelNum
     return generatedMusic
 
 fs = 0   
+content, fs= generateFourierMagns(".mp3",2048)
+style, fs = generateFourierMagns(".mp3",2048)
 
 filterNum = 4096
 #defining filter (gotta be the same for all runs!)
@@ -103,8 +106,10 @@ kernel = np.random.randn(1, 11, content.shape[0], filterNum) * factor
 
 
 contentFeatures, styleGramMat = generateStyleAndContent(content, style, kernel)
+generatedMusic = styleTransfer(contentFeatures, styleGramMat, kernel, 0,20,content.shape[0],content.shape[1],4096)
 
 a = np.zeros_like(content)
+a[:content.shape[0],:] =  generatedMusic[0,0].T
 
 # phase reconstruction, see griffin-lim
 p = 2 * np.pi * np.random.random_sample(a.shape) - np.pi
