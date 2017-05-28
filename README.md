@@ -21,7 +21,7 @@ output's gram matrix from the "style" Gram matrix. For the optimiser, I chose L-
 
 A note on Gram matrices: Gram matrices carry information on the linear independence of the vectors they are produced from, and, empirically at least, are a good way to find (pairwise?) "feature correlations".
 
-# Results
+# Experiments
 
 Some example results are:
 
@@ -33,3 +33,20 @@ Some example results are:
 ![Results](https://github.com/wintershammer/soundProcessingAssignment/blob/master/figure_1.png)
 * Content: `guitarFolk.wav`, Style `jazzpack.wav`, Result: `jazzFolk.wav` 
 ![Results](https://github.com/wintershammer/soundProcessingAssignment/blob/master/figure_1-4.png)
+* Content: `stranaChopped.mp3`, Style `jazzpack.wav`, Result: `stranaJazzLonger`
+![Results](https://github.com/wintershammer/soundProcessingAssignment/blob/master/figure_1-5.png)
+
+# Discussion of the experiments
+
+The experiments were focused on style-transfer between tracks of heavily melodic/harmonic character and tracks of exclusively rythmic/percussive character. Unfortunately, due to lack of resources, the results where quite noisy. Cleaned up (denoised, compressed, equalised) versions are also available under the `experiments` folder.
+
+The experiments where done in two major batches:
+* Transfer of melodic style to rythmic content (with results: 'rs_ms.mp3', 'rc_ms.mp3', 'rc_mc.mp3').
+* Transfer of rythmic style to melodic content (with results 'jazzFolk.mp3', 'stranaJazzLonger.mp3').
+
+For the first batch we note that the results where essentially the content track (the heavily rythmic one) with a "melody" overlayed on top, following the rythm and tempo of the content. The 'rc_mc' result is particularly interesting, in that it 
+contains melodic movement (up and down motion) that was not present in the style track (which exhibited downward motion only).
+
+The second batch of results is much more interesting, showing clear transfer of rythmic elements (especially snare and bass drumwork) onto the content track, with surprising accuracy.
+
+Note that for all experiments, the tempo of the content tracks did not much the tempo of the style ones, yet the results where rythmically accurate.
