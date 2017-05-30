@@ -7,6 +7,13 @@ This is an implementation of musical style transfer, using convolutional neural 
 * Tensorflow
 * Librosa
 
+# How to run it
+Just edit the two following lines in the ``myStyle.py`` file:
+* ``content, fs= generateFourierMagns(".mp3",2048)``
+* ``style, fs = generateFourierMagns(".mp3",2048)``
+
+to include the filename of your ``.mp3`` or ``.wav`` file as the first argument to ``generateFourierMagns()``.
+
 # How it works
 
 Given two input sound files, one of which supplies the "content" and the other the "style", the implementation (see `myStyle.py`)
